@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		  name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>MAIN</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-icons.css" rel="stylesheet">
+	<link href="css/theme.css" rel="stylesheet">
+	<link href="css/popup.css" rel="stylesheet">
+
+</head>
+<body class="bg-dark text-white main-menu vh-100 overflow-hidden">
+<div class="popup_full  popup_hide" id="popup_options">
+	<section class="popup_container">
+		<div class="popup_header">OPTIONS</div>
+		<div class="popup_content d-flex flex-column justify-content-center text-center h-75">
+			<div class="d-flex justify-content-center my-3">
+				<label class="mx-2">Music: <input id="music" onchange="checkAudio('music');" type="checkbox"></label>
+				<label class="mx-2">Sounds: <input id="sound" onchange="checkAudio('sound');" type="checkbox"></label>
+			</div>
+			<div class="d-flex justify-content-center my-3">
+				<label for="time">Max Time for Per Round: </label>
+				<div class="mx-2">
+					<select class="form-control" id="time">
+						<option value="20">20</option>
+						<option value="30">30</option>
+						<option value="45">45</option>
+					</select>
+				</div>
+			</div>
+			<div class="d-flex justify-content-center my-3">
+				<label class="mx-2 my-auto">Records: <input id="record" onchange="checkedBC('record');" type="checkbox"></label>
+				<div class="mx-2">
+					<button class="btn btn-outline-danger" onclick="reset_rec();"> Reset Records</button>
+				</div>
+			</div>
+
+		</div>
+		<div class="popup_footer"></div>
+	</section>
+	<div class="popup_close mr-5" id="popup_close"><i class="bi- bi-x h1"></i></div>
+</div>
+
+<div class="popup_full  popup_hide" id="popup_records">
+	<section class="popup_container">
+		<div class="popup_header">Records</div>
+		<div class="popup_content d-flex flex-column justify-content-center text-center h-75">
+			<table class="table table-dark bg-transparent w-50 mx-auto">
+				<thead>
+				<tr>
+					<th class="border-0" scope="col">Name</th>
+					<th class="border-0" scope="col">Score</th>
+				</tr>
+				</thead>
+				<tbody id="table_records">
+				</tbody>
+			</table>
+		</div>
+		<div class="popup_footer"></div>
+	</section>
+	<div class="popup_close mr-5" id="popup_records_close"><i class="bi- bi-x h1"></i></div>
+</div>
+
+<div class="container h-100">
+	<div class="row justify-content-center h-100">
+		<div>
+			<div class="d-flex flex-column justify-content-center w-100 h-100 text-center px-5">
+				<div class="d-flex flex-column position-relative justify-content-center mb-auto text-white py-3 order-2 order-md-1 blackandwhite">
+					<img src="img/button.png" class="position-absolute w-100 z-n-1" alt="START">
+					<div class="input-group input-group-sm mb-3 px-5 d-none" id="i_wr_n">
+						<input class="form-control bg-transparent text-white mt-2" aria-describedby="save_button"
+							   aria-label="Recipient's username" id="input_name"
+							   placeholder="Write your name" type="text">
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary btn-sm" id="cancel_button" type="button">Cancel</button>
+							<button class="btn btn-outline-secondary btn-sm" id="save_button" type="button">Save</button>
+						</div>
+					</div>
+					<div class="h2" id="i_n">Hi <span id="name"></span></div>
+				</div>
+
+				<div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-3 align-self-center mb-auto p-0 order-1 order-md-2">
+					<img src="img/logo.png" class="w-100" alt="Logo">
+				</div>
+
+				<a class="d-flex flex-column position-relative justify-content-center button mb-auto text-white text-decoration-none py-3 order-3 order-md-3"
+				   href="game.html">
+					<img src="img/button.png" class="position-absolute w-100 z-n-1" alt="START">
+					<div class="h2">Start</div>
+				</a>
+
+				<a class="d-flex flex-column position-relative justify-content-center button mb-auto text-white text-decoration-none py-3 order-4 order-md-4"
+				   href="#" id="option-button">
+					<img src="img/button.png" class="position-absolute w-100 z-n-1" alt="START">
+					<div class="h2">Options</div>
+				</a>
+
+				<a class="d-flex flex-column position-relative justify-content-center button mb-auto text-white text-decoration-none py-3 order-4 order-md-4"
+				   href="#" id="records-button">
+					<img src="img/button.png" class="position-absolute w-100 z-n-1" alt="START">
+					<div class="h2">Records</div>
+				</a>
+
+				<a class="d-flex flex-column position-relative justify-content-center button mb-auto text-white text-decoration-none py-3 order-5 order-md-5"
+				   href="javascript:close_window();">
+					<img src="img/button.png" class="position-absolute w-100 z-n-1" alt="START">
+					<div class="h2">Quit</div>
+				</a>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="position-absolute bottom-0 p-2 pr-4 bg-dark-smoke h2 flame_shadow rounded" style="right: 0; z-index: -2;">
+	<span style="text-shadow: #6f42c1">Made by Suhangeldi Sazakov</span>
+</div>
+
+<div class="d-flex flex-column-reverse position-absolute left-0 bottom-0 bg-dark-smoke p-2 rounded-right" style="width: 75px;">
+	<img src="img/made.png" alt="Made By" class="img-fluid my-3">
+	<img src="img/html.png" alt="html" class="img-fluid my-3">
+	<img src="img/css.png" alt="css" class="img-fluid my-3">
+	<img src="img/bootstrap.png" alt="css" class="img-fluid my-3">
+	<img src="img/js.png" alt="css" class="img-fluid my-3">
+	<img src="img/jquery.png" alt="css" class="img-fluid my-3">
+</div>
+
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/confirmation.js"></script>
+<script src="js/main-menu.js"></script>
+<audio id="bg_audio" loop>
+	<source src="audio/Towairaito.mp3">
+</audio>
+<script src="js/main-menu_audio.js"></script>
+</body>
+</html>
